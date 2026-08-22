@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+  body {
+    @apply font-sans antialiased;
+    color: #1E1B29;
+    background: #FFFFFF;
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white text-sm transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0;
+    background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #6D28D9 0%, #DB2777 100%);
+    box-shadow: 0 12px 28px -6px rgba(236, 72, 153, 0.45);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm border-2 transition-all duration-300 hover:-translate-y-0.5;
+    border-color: #7C3AED;
+    color: #7C3AED;
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background: rgba(124, 58, 237, 0.08);
+    border-color: #EC4899;
+    color: #EC4899;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #7C3AED 0%, #EC4899 50%, #F97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-full {
+    background: linear-gradient(135deg, #7C3AED 0%, #EC4899 50%, #F97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 border border-slate-100;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4;
+    background: rgba(124, 58, 237, 0.08);
+    color: #7C3AED;
+    border: 1px solid rgba(124, 58, 237, 0.25);
+  }
+
+  .section-title {
+    @apply font-display font-bold leading-tight;
+    color: #1E1B29;
+  }
+
+  .section-subtitle {
+    @apply text-lg leading-relaxed;
+    color: #6B7280;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3.5 rounded-xl border border-slate-200 bg-white placeholder-slate-400 text-sm transition-all duration-200 outline-none;
+    color: #1E1B29;
+  }
+  .input-field:focus {
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  }
+}
+
+@layer utilities {
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, #7C3AED 0%, #EC4899 50%, #F97316 100%);
+  }
+
+  .bg-aurora-wash {
+    background: linear-gradient(135deg, #EDE7F9 0%, #FCE7F3 50%, #FEF3E7 100%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: white;
+  z-index: 0;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #7C3AED, #EC4899, #F97316);
+  z-index: -1;
+}
+
+/* Floating orb */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FEF3E7;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#7C3AED, #EC4899, #F97316);
+  border-radius: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Sunset Aurora Custom Cursor
+═══════════════════════════════════════════════════════════ */
+
+/* Hide native cursor globally */
+html.custom-cursor-active *,
+html.custom-cursor-active { cursor: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor-dot,
+  .custom-cursor-ring { display: none !important; }
+  html.custom-cursor-active *,
+  html.custom-cursor-active { cursor: auto !important; }
+}
+
+/* ── Shared base ── */
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform, opacity;
+  transition: opacity 0.25s ease, width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  backface-visibility: hidden;
+}
+
+/* ── Inner dot: vibrant violet/pink ── */
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  margin-top: -4px;
+  background: #7C3AED;
+  box-shadow: 0 0 10px 2px rgba(236, 72, 153, 0.6);
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+/* ── Outer ring: aurora glow ── */
+.custom-cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  margin-top: -18px;
+  border: 1.5px solid rgba(236, 72, 153, 0.6);
+  background: rgba(124, 58, 237, 0.08);
+  box-shadow:
+    0 0 20px 4px rgba(236, 72, 153, 0.16),
+    inset 0 0 12px 2px rgba(124, 58, 237, 0.08);
+  transition: opacity 0.25s ease,
+              width  0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              margin 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease,
+              background 0.3s ease,
+              border-color 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+/* ── Hover state ── */
+.custom-cursor-ring.is-hovered {
+  width: 54px;
+  height: 54px;
+  margin-left: -27px;
+  margin-top: -27px;
+  border-color: rgba(249, 115, 22, 0.7);
+  background: rgba(236, 72, 153, 0.12);
+  box-shadow:
+    0 0 32px 8px rgba(249, 115, 22, 0.2),
+    inset 0 0 20px 4px rgba(236, 72, 153, 0.1);
+}
+
+/* ── Click state ── */
+.custom-cursor-ring.is-clicking {
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+  background: rgba(124, 58, 237, 0.25);
+}

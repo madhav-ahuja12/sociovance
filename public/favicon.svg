@@ -1,0 +1,20 @@
+<svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="50" fill="white"/>
+  <!-- Signal arcs -->
+  <path d="M 50 22 A 10 10 0 0 1 60 22" stroke="url(#g)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M 50 22 A 16 16 0 0 1 66 22" stroke="url(#g)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M 50 22 A 22 22 0 0 1 72 22" stroke="url(#g)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- S shape -->
+  <path d="M 64 38 C 64 32,58 28,50 28 C 40 28,34 33,34 40 C 34 48,42 52,50 52 C 58 52,66 56,66 64 C 66 72,59 77,50 77 C 40 77,34 73,34 67"
+    stroke="url(#g)" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  <!-- V shape -->
+  <path d="M 42 38 L 50 62 L 58 38" stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
