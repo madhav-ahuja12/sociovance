@@ -19,6 +19,7 @@ const Contact = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const open = isBusinessOpen();
 
   const {
@@ -29,12 +30,39 @@ const Contact = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1200));
-    console.log('Form submitted:', data);
-    setSubmitted(true);
-    reset();
-    setTimeout(() => setSubmitted(false), 5000);
+    setSubmitError('');
+    try {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE';
+      
+      const payload = {
+        access_key: accessKey,
+        subject: `New Lead: ${data.name} (${data.company || 'Individual'})`,
+        from_name: 'Sociovance Website Leads',
+        ...data,
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (result.success || response.ok) {
+        setSubmitted(true);
+        reset();
+        setTimeout(() => setSubmitted(false), 6000);
+      } else {
+        setSubmitError(result.message || 'Something went wrong. Please try again or email info@sociovance.com');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setSubmitError('Failed to send message. Please reach out to info@sociovance.com or call +91 70171 14214 directly.');
+    }
   };
 
   return (
@@ -84,10 +112,15 @@ const Contact = () => {
                     <CheckCircle size={40} className="text-violet-600" />
                   </div>
                   <h3 className="font-display font-bold text-2xl text-slate-900 mb-2">Message Sent!</h3>
-                  <p className="text-slate-600">We'll get back to you within 24 hours.</p>
+                  <p className="text-slate-600">We've received your request and will get back to you within 24 hours.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                  {submitError && (
+                    <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold">
+                      {submitError}
+                    </div>
+                  )}
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-semibold text-slate-900 mb-2">
