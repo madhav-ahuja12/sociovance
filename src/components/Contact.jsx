@@ -43,7 +43,7 @@ const Contact = () => {
         _captcha: 'false',
       };
 
-      const response = await fetch('https://formsubmit.co/ajax/info@sociovance.com', {
+      const response = await fetch('https://formsubmit.co/ajax/Info@sociovance.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,11 +59,11 @@ const Contact = () => {
         reset();
         setTimeout(() => setSubmitted(false), 6000);
       } else {
-        setSubmitError(result.message || 'Something went wrong. Please try again or email info@sociovance.com directly.');
+        setSubmitError(result.message || 'Something went wrong. Please try again or email Info@sociovance.com directly.');
       }
     } catch (err) {
       console.error('Submission error:', err);
-      setSubmitError('Failed to send message. Please reach out directly to info@sociovance.com or call +91 70171 14214.');
+      setSubmitError('Failed to send message. Please reach out directly to Info@sociovance.com or call +91 70171 14214.');
     }
   };
 
@@ -253,7 +253,7 @@ const Contact = () => {
 
                 <div className="space-y-3">
                   {[
-                    { Icon: Mail, label: 'info@sociovance.com', href: 'mailto:info@sociovance.com' },
+                    { Icon: Mail, label: 'Info@sociovance.com', href: 'mailto:Info@sociovance.com' },
                     { Icon: Phone, label: '+91 70171 14214', href: 'tel:+917017114214' },
                     { Icon: Globe, label: 'sociovance.com', href: 'https://sociovance.com' },
                     { Icon: MapPin, label: 'New Delhi, India', href: 'https://maps.google.com/?q=New+Delhi,+India' },

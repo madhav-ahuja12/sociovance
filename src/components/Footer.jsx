@@ -125,9 +125,9 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Contact</h4>
             <ul className="space-y-3 mb-6">
               <li>
-                <a href="mailto:info@sociovance.com" className="flex items-center gap-2.5 text-sm hover:text-white transition-colors">
+                <a href="mailto:Info@sociovance.com" className="flex items-center gap-2.5 text-sm hover:text-white transition-colors">
                   <Mail size={14} className="text-pink-400 shrink-0" />
-                  info@sociovance.com
+                  Info@sociovance.com
                 </a>
               </li>
               <li>
