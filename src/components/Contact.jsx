@@ -32,16 +32,18 @@ const Contact = () => {
   const onSubmit = async (data) => {
     setSubmitError('');
     try {
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE';
-      
       const payload = {
-        access_key: accessKey,
-        subject: `New Lead: ${data.name} (${data.company || 'Individual'})`,
-        from_name: 'Sociovance Website Leads',
-        ...data,
+        name: data.name,
+        email: data.email,
+        company: data.company || 'Not specified',
+        interest: data.interest,
+        message: data.message,
+        _subject: `New Lead from Website: ${data.name} (${data.company || 'Individual'})`,
+        _template: 'table',
+        _captcha: 'false',
       };
 
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://formsubmit.co/ajax/info@sociovance.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,16 +54,16 @@ const Contact = () => {
 
       const result = await response.json();
 
-      if (result.success || response.ok) {
+      if (response.ok || result.success === 'true' || result.success === true) {
         setSubmitted(true);
         reset();
         setTimeout(() => setSubmitted(false), 6000);
       } else {
-        setSubmitError(result.message || 'Something went wrong. Please try again or email info@sociovance.com');
+        setSubmitError(result.message || 'Something went wrong. Please try again or email info@sociovance.com directly.');
       }
     } catch (err) {
       console.error('Submission error:', err);
-      setSubmitError('Failed to send message. Please reach out to info@sociovance.com or call +91 70171 14214 directly.');
+      setSubmitError('Failed to send message. Please reach out directly to info@sociovance.com or call +91 70171 14214.');
     }
   };
 
