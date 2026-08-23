@@ -6,7 +6,7 @@ import { Sparkles, ArrowUpRight, Award, Zap, ShieldCheck } from 'lucide-react';
 const team = [
   {
     name: 'Rkthan Arora',
-    role: 'Founder & CEO',
+    role: 'Founder',
     tag: 'Sociovance',
     bio: 'Visionary behind Sociovance — building a bridge between creators, brands, and the future of influencer marketing.',
     initials: 'RA',
