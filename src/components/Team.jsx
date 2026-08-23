@@ -20,7 +20,7 @@ const team = [
       linkedin: 'https://www.linkedin.com/in/rkthan-arora-808a0a160/', 
       instagram: 'https://www.instagram.com/_rkthan/', 
       twitter: 'https://x.com/rkthan',
-      facebook: '#' 
+      facebook: 'https://www.facebook.com/rkthan.arora.7' 
     },
   },
   {
@@ -36,10 +36,10 @@ const team = [
     orb1: '#EC4899',
     orb2: '#F97316',
     social: { 
-      linkedin: '#', 
-      instagram: '#', 
+      linkedin: 'https://www.linkedin.com/in/vishal-kumar-4b034621b/', 
+      instagram: 'https://www.instagram.com/vishal_1101/', 
       twitter: '#',
-      facebook: '#' 
+      facebook: 'https://www.facebook.com/kumarvishal1239' 
     },
   },
   {
@@ -58,7 +58,7 @@ const team = [
       linkedin: 'https://www.linkedin.com/in/madhav-ahuja-69598b312/', 
       instagram: 'https://www.instagram.com/madhavahuja_/', 
       twitter: 'https://x.com/madhavahuja_',
-      facebook: '#' 
+      facebook: 'https://www.facebook.com/profile.php?id=100013646828885' 
     },
   },
 ];
