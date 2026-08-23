@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import SmoothScroll from './components/SmoothScroll';
 import FloatingActions from './components/FloatingActions';
-import CustomCursor from './components/CustomCursor';
 import Home from './pages/Home';
 import ContactPage from './pages/ContactPage';
 
@@ -13,7 +12,6 @@ function App() {
   return (
     <Router>
       <SmoothScroll />
-      <CustomCursor />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Navbar />
